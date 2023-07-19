@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bai 1</title>
+</head>
+<body>
+    <input type="text" id="fullName" name="fullName" placeholder="Nhập tên người dùng">
+    <button id="addName">Thêm</button>
+    <button id="deleteName">Xóa</button>
+    <p>Người dùng tên : <span class="span-name"></span></p>
+    <script>
+        let btnAdd = document.getElementById("addName");
+        let spanName = document.querySelector(".span-name");
+        let input = document.getElementById("fullName");
+        let btnDelete = document.getElementById("deleteName");
+        function addUser() {
+            if (!btnAdd) {
+                return;
+            }
+            btnAdd.addEventListener("click", (event)=>{
+                event.preventDefault();
+                localStorage.setItem("userName",input.value);
+                spanName.innerText = input.value;
+                let isCheck = localStorage.getItem("userName");
+                if (isCheck) {
+                    btnAdd.innerText= "Sửa"
+                }
+                input.value="";
+
+            })
+
+        }
+        addUser();
+        function deleteUser() {
+            btnDelete.addEventListener("click",(e)=>{
+                e.preventDefault();
+                localStorage.removeItem("userName");
+                spanName.innerText="";
+                btnAdd.innerText ="Thêm";
+                
+            })
+        }
+        deleteUser();
+            </script>
+</body>
+</html>

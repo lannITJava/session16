@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai 2</title>
+</head>
+<body>
+    <form >
+        <input type="text" id="userName" name="userName" placeholder="UserName"><br>
+        <input type="text" id="email" name="email" placeholder="Email"><br>
+        <input type="password" id="password" name="password" placeholder="Password"><br>
+        <input type="password" id="resetPassword" name="resetPassword" placeholder="Reset Password"><br>
+        <button type="submit" id="btnSubmit">Submit</button>
+    </form>
+    <script>
+        let listUser = [];
+        let btnSubmit = document.getElementById("btnSubmit");
+        let userName =document.getElementById("userName");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let resetPassword= document.getElementById("resetPassword");
+        function saveUser() {
+            btnSubmit.addEventListener("click", ()=>{
+                let newUser = {
+                    userName : userName.value,
+                    email : email.value,
+                    password : password.value,
+                    resetPassword : resetPassword.value,
+                }
+                localStorage.setItem("userInfo", JSON.stringify(newUser));
+                userName.value="";
+                email.value="";
+                password.value="";
+                resetPassword.value="";
+            })
+        }
+        saveUser();
+    </script>
+</body>
+</html>
